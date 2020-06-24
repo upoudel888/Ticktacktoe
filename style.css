@@ -1,0 +1,28 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+table{
+    width: 50%;
+    height: 50vh;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 5vh auto;
+    text-align: center;
+    font-size: 4em;
+
+    /*position: relative;*/
+    /*transform: translate(-50%,-50%);*/
+}
+td{
+    border: 5px solid black;
+    width: 33.33%;
+    height: 33.33%;
+
+}
+td >p{
+    display: none;
+}
+
