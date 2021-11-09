@@ -1,71 +1,85 @@
-$(document).ready(function(){
-    var n =0;
-    var clickstatus = 0;
+
+let turn = 0; // 1 is X and 0 is O
+let inputCount = 0; //for checking draw
+let winStatus = 0;  // 1 means there's a winner
+let board = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
 
 
-    var array = [
-    [5,4,3],
-    [5,3,3],
-    [5,4,3]
-    ]
-    // function to update the array
-    function update(i,j,usr){
-        array[i][j]= usr;
-        console.log(array)
+//UPDATES X and 0 in the board and returns status if updated
+function update(pos = [0,0]){
+    let a = turn ? 'X':'O';
+    console.log(a);
+    if(!winStatus){
+        board[pos[0]][pos[1]] = a;
+        inputCount +=1;
+        console.log(board);
+        return true;
     }
-// function to find out whether x or y turn it is
-    function user(n){
-        if(n%2===0){
-            return "X";
-        }
-        else{
-            return "O";
-        }
-    }
-// function to check whether a user has won or not
-function check(){
-    var flag =0;
-    if(array[0][0]==array[1][1] && array[1][1]==array[2][2]){
-        flag =1;
-    }else if(array[0][2]==array[1][1] && array[1][1]==array[2][0]){
-        flag =1;
-    }else{
-        for(var i =0;i<3;i++){
-            if(array[i][0]==array[i][1] && array[i][1]==array[i][2]){
-                var flag =1;
-            }else if(array[0][i]==array[1][i] && array[1][i]==array[2][i]){
-                var flag =1;
-            }
-        }
-    }
-    return flag;
+    return false;
 }
-$("td").on({
-    "click":function(){
-            if(n>=9){
-                alert("DRAW. Re-fresh to play");
+
+//checking winstatus
+function checkWin(){
+    //main diagonal check
+    if(board[0][0] == board[1][1] && board[1][1]==board[2][2]){
+        console.log('main');
+        return true;
+    } 
+    // other diagonal check
+    if(board[0][2] == board[1][1] && board[1][1] ==board[2][0]){
+        console.log('other');
+        return true;
+       
+    } 
+
+    //row and column check
+    for(let i = 0; i<3;i++){
+        if(board[i][0] == board[i][1] && board[i][1] ==board[i][2]){
+            console.log('row',i);
+            return true;
+           
+        } 
+        
+        if(board[0][i] == board[1][i] && board[1][i]==board[2][i]){
+            console.log('column',i);
+            return true;
+        } 
+    }
+    return false;
+}
+
+
+let emptyPos = document.querySelectorAll('td');
+emptyPos.forEach(emptyPos =>{
+    emptyPos.addEventListener('click',function(){
+        var pos = emptyPos.textContent;
+        //checking if X or O has already been assigned to the position
+        if(pos.length != 1){
+            
+            if(update(pos)){
+                let a = turn ? 'X':'O';
+                emptyPos.textContent = a;
+                emptyPos.style.display = "box";
+                turn = turn ? 0:1;
             }
-                n+=1;
-                clickstatus+=1;
-                console.log(n);
-                var a =$(this).children().text();
-                $(this).children().text(user(n)).css("display","inline");
-                console.log(a);
-                update(Number(a[1]),Number(a[3]),user(n));
-                if(n>=5){
-                    if(check()){
-                        alert(user(n)+" has won"+"\n refresh to play again");
-                    }
+            if(inputCount >= 5){
+                if(checkWin()){
+                    winStatus = 1;
+                    turn = turn ? 0:1;
+                    let a = turn ? 'X':'O';
+
+                    alert(a + " has won the game");
+                    location.reload();
                 }
+
+            }
         }
-    // "mouseenter": function(){
-    //     $(this).children().text(user(n)).css("display","inline");
+    })
+})
 
-    // },
-    // "mouseleave": function(){
-    //     if(n!==clickstatus){
-    //         $(this).children().text(user(n)).css("display","none");
-    //     }
-    });
 
-});
+
