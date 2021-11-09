@@ -10,7 +10,7 @@ let board = [
 
 
 //UPDATES X and 0 in the board and returns status if updated
-function update(pos = [0,0]){
+function update(pos){
     let a = turn ? 'X':'O';
     console.log(a);
     if(!winStatus){
@@ -26,26 +26,21 @@ function update(pos = [0,0]){
 function checkWin(){
     //main diagonal check
     if(board[0][0] == board[1][1] && board[1][1]==board[2][2]){
-        console.log('main');
         return true;
     } 
     // other diagonal check
     if(board[0][2] == board[1][1] && board[1][1] ==board[2][0]){
-        console.log('other');
         return true;
        
     } 
-
     //row and column check
     for(let i = 0; i<3;i++){
         if(board[i][0] == board[i][1] && board[i][1] ==board[i][2]){
-            console.log('row',i);
             return true;
            
         } 
         
         if(board[0][i] == board[1][i] && board[1][i]==board[2][i]){
-            console.log('column',i);
             return true;
         } 
     }
@@ -63,7 +58,7 @@ emptyPos.forEach(emptyPos =>{
             if(update(pos)){
                 let a = turn ? 'X':'O';
                 emptyPos.textContent = a;
-                emptyPos.style.display = "box";
+                emptyPos.style.display = "inside";
                 turn = turn ? 0:1;
             }
             if(inputCount >= 5){
@@ -74,9 +69,12 @@ emptyPos.forEach(emptyPos =>{
 
                     alert(a + " has won the game");
                     location.reload();
+                }else if(inputCount == 9){
+                    alert("Draw");
+                location.reload();
                 }
-
             }
+            
         }
     })
 })
