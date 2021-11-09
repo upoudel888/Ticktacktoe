@@ -1,3 +1,12 @@
+@font-face {
+    font-family: font1;
+    src: url(font.ttf);
+}
+*{
+    margin : 0px;
+    padding : 0px;
+    box-sizing: border-box;
+}
 body{
     background-color: #1e262a;
 }
@@ -10,45 +19,48 @@ body{
     border-radius: 5px 5px 5px 5px;
     
     display: grid;
-    grid-row-gap: 5px;
-    grid-column-gap: 5px;
-    grid-template-columns: auto auto auto;
+    grid-row-gap:2px;
+    grid-column-gap: 2px;
+    grid-template-columns: 33% 33% 33%;
     background-color: #3c4c54;
-    padding: 10px;
+    padding: 5px 5px 5px 5px; 
   }
   .box, .result {
+    font-family: font1; 
+    font-size: 60px;
+    font-weight:300px;
+    
+    text-align: center;
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
     border-radius: 5px 5px 5px 5px;
     
   }
  .result{
-     visibility: hidden;
-     width: 25vh;
      margin: auto;
      margin-top: 25px;
+     font-size: 27px;
+     width: 25vh;
+     visibility: hidden;
  }
  .win{
-    background-color: rgba(255,191,0,255);
+    background-color: rgba(224, 193, 13, 0.986);
  }
  .draw{
     background-color: rgba(56, 158, 221, 0.8);
  }
  p{
-    display: inline;
+    display: inline; 
     visibility: hidden;
 
  }
 .reload{
-    margin-top: 15px;
-    opacity: 0.8;
-    width: 15vh;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 15px;
+    opacity: 0.8;
+    width: 12vh;
 
 }
 .reload:hover{
