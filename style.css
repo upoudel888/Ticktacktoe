@@ -1,28 +1,56 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+body{
+    background-color: #1e262a;
 }
-
-table{
-    width: 30%;
-    height: 50vh;
-    border: 1px solid black;
-    border-collapse: collapse;
-    margin: 5vh auto;
+.main {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top : 5%;
+    width : 40vh;
+    height: 40vh;
+    border-radius: 5px 5px 5px 5px;
+    
+    display: grid;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    grid-template-columns: auto auto auto;
+    background-color: #3c4c54;
+    padding: 10px;
+  }
+  .box, .result {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
     text-align: center;
-    font-size: 4em;
+    border-radius: 5px 5px 5px 5px;
+    
+  }
+ .result{
+     visibility: hidden;
+     width: 25vh;
+     margin: auto;
+     margin-top: 25px;
+ }
+ .win{
+    background-color: rgba(255,191,0,255);
+ }
+ .draw{
+    background-color: rgba(56, 158, 221, 0.8);
+ }
+ p{
+    display: inline;
+    visibility: hidden;
 
-    /*position: relative;*/
-    /*transform: translate(-50%,-50%);*/
-}
-td{
-    border: 5px solid black;
-    width: 33.33%;
-    height: 33.33%;
+ }
+.reload{
+    margin-top: 15px;
+    opacity: 0.8;
+    width: 15vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 
 }
-td >p{
-    display: none;
+.reload:hover{
+    opacity: 1;
 }
-
