@@ -112,7 +112,7 @@ emptyPos.forEach(emptyPos =>{
 
                     resultBox.innerHTML = a + " WON !! ";
                     resultBox.style.cssText = 'z-index: 1; visibility: visible'
-                    resultBox.classList.add('win');
+                    resultBox.classList.add('win1','pulsate-fwd');
                     overLay.style.opacity = '0.8';
                     
                     overLay.style.cssText = 'z-index : 1;opacity:0.8;';
@@ -120,7 +120,7 @@ emptyPos.forEach(emptyPos =>{
                 }else if(inputCount == 9){
                     resultBox.innerHTML = "DRAW";
                     resultBox.style.cssText = 'z-index: 1; visibility: visible'
-                    resultBox.classList.add('draw');
+                    resultBox.classList.add('draw','pulsate-fwd');
                     overLay.style.opacity = '0.8';
                     overLay.style.cssText = 'z-index : 1;opacity:0.8';
                     
@@ -154,7 +154,7 @@ restart.addEventListener("click",function(){
         }
     }
     resultBox.style.cssText = 'z-index: 0; visibility: hidden'
-    
+    resultBox.classList.remove('win1','draw','pulsate-fwd');
     overLay.style.cssText = 'z-index : -1;opacity:0;';
 });
 

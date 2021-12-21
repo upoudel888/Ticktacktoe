@@ -64,7 +64,10 @@ body{
      padding-top: 10%;
  }
  .win{
-    background-color: rgba(224, 193, 13, 0.986);
+    background-color: rgba(245, 217, 58, 0.986);
+ }
+ .win1{
+    background-color: rgba(61, 245, 58, 0.843);
  }
  .draw{
     background-color: rgba(56, 158, 221, 0.8);
@@ -85,4 +88,38 @@ body{
 }
 .reload:hover{
     opacity: 1;
+}
+
+/* pulsate animation */
+.pulsate-fwd {
+	-webkit-animation: pulsate-fwd 0.3s ease-in-out both;
+	        animation: pulsate-fwd 0.3s ease-in-out both;
+}
+@-webkit-keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
