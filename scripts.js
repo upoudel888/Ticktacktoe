@@ -13,6 +13,7 @@ let board = [
 let emptyPos = document.querySelectorAll('.box');
 let resultBox = document.querySelector('.result');
 let restart = document.querySelector('.reload');
+let overLay = document.querySelector('.overlay');
 
 
 //UPDATES X and 0 in the board and returns status if updated
@@ -110,16 +111,23 @@ emptyPos.forEach(emptyPos =>{
                     highlightWin();
 
                     resultBox.innerHTML = a + " WON !! ";
-                    resultBox.style.visibility= "visible";
+                    resultBox.style.cssText = 'z-index: 1; visibility: visible'
                     resultBox.classList.add('win');
+                    overLay.style.opacity = '0.8';
+                    
+                    overLay.style.cssText = 'z-index : 1;opacity:0.8;';
                     
                 }else if(inputCount == 9){
                     resultBox.innerHTML = "DRAW";
-                    resultBox.style.visibility= "visible";
+                    resultBox.style.cssText = 'z-index: 1; visibility: visible'
                     resultBox.classList.add('draw');
+                    overLay.style.opacity = '0.8';
+                    overLay.style.cssText = 'z-index : 1;opacity:0.8';
+                    
+                    
                 }
+                
             }
-            
         }
     })
     
@@ -145,8 +153,9 @@ restart.addEventListener("click",function(){
             count++;
         }
     }
-    resultBox.style.visibility= "hidden";
+    resultBox.style.cssText = 'z-index: 0; visibility: hidden'
     
+    overLay.style.cssText = 'z-index : -1;opacity:0;';
 });
 
 
